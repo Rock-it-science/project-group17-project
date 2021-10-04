@@ -13,12 +13,12 @@ Details for Milestone are available on Canvas (left sidebar, Course Project) or 
 
 ## Describe your dataset in about 150-200 words
 
-{Add your stuff here}
+Our dataset, the Free Music Archive (FMA), exists in GitHub and was created by Michaël Defferrard, Kirell Benzi, Pierre Vandergheynst, Xavier Bresson. The dataset contains information on over 100’000 songs, including metadata such as track names, artist names, genres, artist locations, language, etc. The dataset also includes other information such as echonest and librosa analysis features for every track. The motivating idea behind the dataset is to address the fact that "the community's growing interest in feature and end-to-end learning is ... restrained by the limited availability of large audio datasets."  The dataset was created for the purpose of research and learning at a large-scale with easily accessible data that has permissive licensing. The data was originally collected from 22 different music databases with permission from the artists.
 
 ## Team Members
 
 - Will McFarland: 4th year computer science student interested in music and data!
-- Person 2: one sentence about you!
+- Jin-Seob Kim: 4th year psychology student interested in music and video games
 - Person 3: one sentence about you!
 
 ## Images
