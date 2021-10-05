@@ -18,7 +18,7 @@ Details for Milestone are available on Canvas (left sidebar, Course Project) or 
 ## Team Members
 
 - Will McFarland: 4th year computer science student interested in music and data!
-- Person 2: one sentence about you!
+- Sarah Li-Wong: A 4th year Human Kinetics student that is curious about data and technology.
 - Person 3: one sentence about you!
 
 ## Images
