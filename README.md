@@ -27,7 +27,7 @@ Our dataset, the Free Music Archive (FMA), exists in GitHub and was created by M
 
 ## References
 
-FMA Dataset github link: [https://github.com/mdeff/fma]
+[FMA Dataset github link](https://github.com/mdeff/fma)
 
 
 
