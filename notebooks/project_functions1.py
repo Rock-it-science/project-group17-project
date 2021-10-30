@@ -1,10 +1,13 @@
 import pandas as pd
 import re
 
-def load_and_process(tracks_csv, features_csv):
-    # Load the data (load outside of method chain so tracks is reset every time this code snippet is run
-    tracks = pd.read_csv(tracks_csv, low_memory=False)
-
+def chain(tracks_csv="../data/raw/tracks.csv", features_csv="../data/raw/features.csv"):
+    """
+        Method chain function to load and process tracks and features data for analysis 1 (Will)
+    """
+    
+    tracks = pd.read_csv(tracks_csv, low_memory=False) # must load before method chain as first rename statement references another row, which requires having this loaded prior to the method chain
+    # tracks
     tracks = (
         tracks
         # Append specific name (row 0) to column name 
@@ -23,17 +26,22 @@ def load_and_process(tracks_csv, features_csv):
     # Cast track id to int (cannot apply astype to only a single column in method chain)
     tracks['track id'] = tracks['track id'].astype(int)
 
+    # Features
     # Load data; skip first 3 rows as they are just metadata headers. Use only track id and RMSE columns
-    rmse = pd.read_csv(features_csv, skiprows=[0,1,2], usecols=[0, 395])
+    cols = [0] + list(range(293,314)) + [395] # list of coumns we want to use
+    features = pd.read_csv("../data/raw/features.csv", skiprows=[0,1,2], usecols=cols)
 
-    rmse = (
-        rmse
+    features = (
+        features
+        # Rename track id and rmse mean
         .rename(columns={"track_id":"track id", "Unnamed: 395":"rmse_mean"})
+        # Rename 20 mfcc columns via lambda function
+        .rename(columns=lambda x: 'mfcc' + str(int(x[x.index(':')+1:]) - 292) if ':' in x else x)
     )
-    
-    # Create the main dataframe
+
+    # Merge features and tracks data
     data = (
-        pd.merge(tracks, rmse, on="track id", how="inner") # Combine metadata with RMSE
+        pd.merge(tracks, features, on="track id")
     )
     
     return data
