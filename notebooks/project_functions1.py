@@ -17,9 +17,9 @@ def chain(tracks_csv="../data/raw/tracks.csv", features_csv="../data/raw/feature
         # Now remove first 2 rows after column titles
         .drop([0, 1])
         # Rename first unnamed column to id
-        .rename(columns={'Unnamed: 0 nan': 'track id'})
+        .rename(columns={'Unnamed: 0 nan': 'track id', 'track genre_top': 'genre'})
         # Select just the columns we will be using for the analysis
-        .loc[:, ['track id', 'track title', 'artist name', 'album title', 'track genre_top']]
+        .loc[:, ['track id', 'track title', 'artist name', 'album title', 'genre']]
         # Drop rows with na values
         .dropna()
     )
