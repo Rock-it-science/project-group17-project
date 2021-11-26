@@ -11,6 +11,9 @@ def jinData(jintracks = "../data/raw/tracks.csv"):
     #Only taking the columns needed for my research question
     tracks_raw[['Unnamed: 0', 'track.3', 'track.6', 'track.7', 'track.14', 'artist.12', 'track.19']]
         
+    #dropping all rows that are not the "Rock" genre
+    .drop(tracks_raw.loc[(tracks_raw['track.7'] != "Rock")].index)
+        
     #Giving Columns sensible names
     .rename(columns = {'Unnamed: 0': "Track ID", 'track.3': "year of release", 'track.6': "favorites", 'track.7': "genre", 'track.14': "number of listens", 'artist.12': "artist name", 'track.19': "track title"})
         
@@ -25,6 +28,10 @@ def jinData(jintracks = "../data/raw/tracks.csv"):
     
     #Change the strings into integers
     tracks_cleanup[['year of release', 'favorites', 'number of listens']] = tracks_cleanup[['year of release', 'favorites', 'number of listens']].astype(int)
+    
+    #drop all rows corresponding to these two years because they have incomplete data
+    tracks_cleanup = tracks_cleanup.drop(tracks_cleanup.loc[(tracks_cleanup['year of release'] == 2008)].index)
+    tracks_cleanup = tracks_cleanup.drop(tracks_cleanup.loc[(tracks_cleanup['year of release'] == 2017)].index)
     
     #only taking columns needed
     tracks_cleanup = tracks_cleanup[['artist name', 'track title', 'Track ID', 'year of release', 'genre', 'favorites', 'number of listens']]
